@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Random Word Selector</title>
+</head>
+<body>
+  <button id="merge-two-button">Display Two Merged Arrays</button>
+  <button id="merge-three-button">Display Three Merged Arrays</button>
+  <h1 id="merged-display"></h1>
+  <script>
+    const btn = document.querySelector('#merge-two-button');
+    const btn2 = document.querySelector('#merge-three-button');
+    const display = document.querySelector('#merged-display');
+    const array1 = [1,2,3,4,5];
+    const array2 = ['a', 'b', 'c', 'd', 'e'];
+    const array3 = [true, false, true, false, true];
+
+    function getMergedArray(arr1, arr2) {
+      //es5
+      // const mergedArr = [].concat(arr1, arr2);
+
+      //es6
+      // const mergedArr = [...arr1, ...arr2];
+
+      //Using loops and push
+      const mergedArr = [];
+      for (let i = 0; i < arr1.length; i++) {
+        mergedArr.push(arr1[i]);
+      }
+      for (let i = 0; i < arr2.length; i++) {
+        mergedArr.push(arr2[i]);
+      }
+
+      return mergedArr;
+    }
+
+    function mergeTwo() {
+      const twoMerged = getMergedArray(array1, array2);
+      displayArray(twoMerged);
+    }
+
+    function mergethree() {
+      const twoMerged = getMergedArray(array1, array2);
+      const threeMerged = getMergedArray(twoMerged, array3);
+      displayArray(threeMerged);
+    }
+
+    function displayArray(arr) {
+      display.textContent = JSON.stringify(arr);
+    }
+
+
+    btn.addEventListener('click', mergeTwo)
+    btn2.addEventListener('click', mergethree)
+  </script>
+</body>
+</html>

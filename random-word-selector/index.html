@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Random Word Selector</title>
+</head>
+<body>
+  <button id="new-word-button">New Word</button>
+  <h1 id="word-display"></h1>
+  <script>
+    const btn = document.querySelector('#new-word-button');
+    const display = document.querySelector('#word-display');
+    const words = ['word1', 'word2', 'word3', 'word4'];
+
+    function selectRandomWord() {
+      const randomIndex = Math.floor(Math.random() * words.length);
+      const randomWord = words[randomIndex];
+      displayWord(randomWord);
+    }
+
+    function displayWord(word) {
+      display.textContent = word;
+    }
+
+    btn.addEventListener('click', selectRandomWord)
+  </script>
+</body>
+</html>
